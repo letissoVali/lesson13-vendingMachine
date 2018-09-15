@@ -48,7 +48,8 @@ public class Main {
      */
     private static void processAddMoney(int money) {
         // TODO: добавить обработку исключительной ситуации - замятия
-        try {
+        vm.addMoney(money);
+        /*try {
             double jam = Math.random();
             if(jam < 0.3) {
                 throw new JamException();
@@ -57,9 +58,7 @@ public class Main {
             }
         } catch (JamException jamEx) {
             System.out.println(jamEx.getMessage() + " Заберите Ваши " + money + " у.е., они нам не нравятся!");
-        }
-
-
+        }*/
     }
 
     /**

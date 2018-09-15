@@ -4,9 +4,8 @@ import ru.valiullin.drinks.ColdDrinkType;
 import ru.valiullin.drinks.DrinkType;
 import ru.valiullin.drinks.HotDrinkType;
 import ru.valiullin.drinks.Product;
-import ru.valiullin.exceptions.HumanFactorException;
-import ru.valiullin.exceptions.KeyIsInvalidException;
-import ru.valiullin.exceptions.NotEnoughMoneyException;
+import ru.valiullin.exceptions.*;
+
 
 /**
  * Торговый автомат
@@ -36,7 +35,18 @@ public class VendingMachine {
     //  TODO: Инсценировать замятие купюры с некоторой вероятностью события. В обработчике ошибки выдать клиенту ровно столько денег, сколько было «замято»
 
     public double addMoney(double money) {
-        this.money += money;
+        try {
+            double jam = Math.random();
+            if(jam < 0.3) {
+                throw new JamException();
+            } else {
+                this.money += money;
+                System.out.println("Текущий баланс: " + this.money);
+            }
+        } catch (JamException jamEx) {
+            System.out.println(jamEx.getMessage() + " Заберите Ваши " + money + " у.е., они нам не нравятся!");
+        }
+        //this.money += money;
         return this.money;
     }
 
